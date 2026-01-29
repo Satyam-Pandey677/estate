@@ -3,6 +3,11 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "rimraf dist && npx tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "npm run build && concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\""
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
@@ -14,9 +19,11 @@
     "@types/uuid": "^11.0.0",
     "concurrently": "^9.2.1",
     "nodemon": "^3.1.11",
+    "prisma": "^7.3.0",
     "rimraf": "^6.1.2",
     "shx": "^0.4.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
@@ -24,16 +31,21 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.972.0",
     "@aws-sdk/lib-storage": "^3.972.0",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
     "@terraformer/wkt": "^2.2.1",
     "axios": "^1.13.2",
     "body-parser": "^2.2.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "fs": "^0.0.1-security",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
+    "path": "^0.12.7",
+    "pg": "^8.17.2",
     "uuid": "^13.0.0"
   }
 }
